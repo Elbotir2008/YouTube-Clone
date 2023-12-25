@@ -4,7 +4,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import DownloadIcon from "@mui/icons-material/Download";
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
-import PeopleIcon from "@mui/icons-material/People";
+// import PeopleIcon from "@mui/icons-material/People";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
@@ -19,7 +19,14 @@ export const mainListItems = (
     <Link to="/">
       <ListItemButton>
         <ListItemIcon>
-          <Home sx={{ width: "2rem", height: "2rem", mx: 1 }} />
+          <Home
+            sx={{
+              width: "2rem",
+              height: "2rem",
+              mx: 1,
+              // fill: dark ? "#fff !important" : null,
+            }}
+          />
         </ListItemIcon>
         <ListItemText primary="Home" />
       </ListItemButton>
@@ -27,7 +34,14 @@ export const mainListItems = (
     <Link to="/shorts">
       <ListItemButton>
         <ListItemIcon>
-          <SlideshowIcon sx={{ width: "2rem", height: "2rem", mx: 1 }} />
+          <SlideshowIcon
+            sx={{
+              width: "2rem",
+              height: "2rem",
+              mx: 1,
+              // fill: dark ? "#fff !important" : null,
+            }}
+          />
         </ListItemIcon>{" "}
         <ListItemText primary="Shorts" />
       </ListItemButton>
@@ -36,7 +50,12 @@ export const mainListItems = (
       <ListItemButton>
         <ListItemIcon>
           <AutoAwesomeMotionIcon
-            sx={{ width: "2rem", height: "2rem", mx: 1 }}
+            sx={{
+              width: "2rem",
+              height: "2rem",
+              mx: 1,
+              // fill: dark ? "#fff !important" : null,
+            }}
           />
         </ListItemIcon>
         <ListItemText primary="Trading videos" />
@@ -50,37 +69,79 @@ export const secondaryListItems = (
     <ListSubheader component="div" inset></ListSubheader>
     <ListItemButton>
       <ListItemIcon>
-        <PersonIcon sx={{ width: "2rem", height: "2rem", mx: 1 }} />
+        <PersonIcon
+          sx={{
+            width: "2rem",
+            height: "2rem",
+            mx: 1,
+            // fill: dark ? "#fff !important" : null,
+          }}
+        />
       </ListItemIcon>
       <ListItemText primary="Your channel" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <RotateLeftIcon sx={{ width: "2rem", height: "2rem", mx: 1 }} />
+        <RotateLeftIcon
+          sx={{
+            width: "2rem",
+            height: "2rem",
+            mx: 1,
+            // fill: dark ? "#fff !important" : null,
+          }}
+        />
       </ListItemIcon>
       <ListItemText primary="History" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <VideoLibraryIcon sx={{ width: "2rem", height: "2rem", mx: 1 }} />
+        <VideoLibraryIcon
+          sx={{
+            width: "2rem",
+            height: "2rem",
+            mx: 1,
+            // fill: dark ? "#fff !important" : null,
+          }}
+        />
       </ListItemIcon>
       <ListItemText primary="Your videos" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <WatchLaterIcon sx={{ width: "2rem", height: "2rem", mx: 1 }} />
+        <WatchLaterIcon
+          sx={{
+            width: "2rem",
+            height: "2rem",
+            mx: 1,
+            // fill: dark ? "#fff !important" : null,
+          }}
+        />
       </ListItemIcon>
       <ListItemText primary="Watch later" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <DownloadIcon sx={{ width: "2rem", height: "2rem", mx: 1 }} />
+        <DownloadIcon
+          sx={{
+            width: "2rem",
+            height: "2rem",
+            mx: 1,
+            // fill: dark ? "#fff !important" : null,
+          }}
+        />
       </ListItemIcon>
       <ListItemText primary="Dowlands" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <ContentCutIcon sx={{ width: "2rem", height: "2rem", mx: 1 }} />
+        <ContentCutIcon
+          sx={{
+            width: "2rem",
+            height: "2rem",
+            mx: 1,
+            // fill: dark ? "#fff !important" : null,
+          }}
+        />
       </ListItemIcon>
       <ListItemText primary="Your clips" />
     </ListItemButton>

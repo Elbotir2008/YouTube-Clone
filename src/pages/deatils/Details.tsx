@@ -23,7 +23,7 @@ const Details = () => {
         id: `${params.id}`,
       },
       headers: {
-        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
+        "X-RapidAPI-Key": "b87e71253bmsh4087579332e4b83p1726c5jsn95d11fef2cb4",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
@@ -47,7 +47,7 @@ const Details = () => {
         maxResults: "100",
       },
       headers: {
-        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
+        "X-RapidAPI-Key": "b87e71253bmsh4087579332e4b83p1726c5jsn95d11fef2cb4",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
@@ -71,7 +71,7 @@ const Details = () => {
         maxResults: "50",
       },
       headers: {
-        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
+        "X-RapidAPI-Key": "b87e71253bmsh4087579332e4b83p1726c5jsn95d11fef2cb4",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };

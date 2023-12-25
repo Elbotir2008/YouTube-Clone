@@ -3,10 +3,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../loading/Loading";
+import useStore from "../../zustand/store";
 
 const Videos = () => {
   const [videosData, setVideosData] = useState<any>([]);
   const [selectedButton, setSelectedButton] = useState("");
+  const dark = useStore((state: any) => state.dark);
+  console.log(dark);
   const fetchVideos = async () => {
     const options = {
       method: "GET",
@@ -17,7 +20,7 @@ const Videos = () => {
         maxResults: "50",
       },
       headers: {
-        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
+        "X-RapidAPI-Key": "b87e71253bmsh4087579332e4b83p1726c5jsn95d11fef2cb4",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
@@ -47,7 +50,7 @@ const Videos = () => {
         maxResults: "50",
       },
       headers: {
-        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
+        "X-RapidAPI-Key": "b87e71253bmsh4087579332e4b83p1726c5jsn95d11fef2cb4",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
@@ -64,9 +67,24 @@ const Videos = () => {
   //   setVideosData(searchVideos);
 
   return (
-    <Box>
-      <div className="btns flex-class">
+    <Box
+      sx={{
+        backgroundColor: dark ? "#1D1A17" : null,
+        color: dark ? "#fff" : null,
+      }}
+    >
+      <Box
+        className="btns flex-class"
+        sx={{
+          color: dark ? "#fff !important" : null,
+          fill: dark ? "#fff !important" : null,
+        }}
+      >
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "New" ? "selectedButton" : ""}
@@ -74,6 +92,10 @@ const Videos = () => {
           New
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "Movie" ? "selectedButton" : ""}
@@ -81,6 +103,10 @@ const Videos = () => {
           Movie
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "New" ? "selectedButton" : ""}
@@ -88,6 +114,10 @@ const Videos = () => {
           Live
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "Live" ? "selectedButton" : ""}
@@ -95,6 +125,10 @@ const Videos = () => {
           Gaming
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "Education" ? "selectedButton" : ""}
@@ -102,6 +136,10 @@ const Videos = () => {
           Education
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "Sport" ? "selectedButton" : ""}
@@ -109,6 +147,10 @@ const Videos = () => {
           Sport
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "Comedy" ? "selectedButton" : ""}
@@ -116,6 +158,10 @@ const Videos = () => {
           Comedy
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "Podcast" ? "selectedButton" : ""}
@@ -123,6 +169,10 @@ const Videos = () => {
           Podcast
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "Fashion" ? "selectedButton" : ""}
@@ -130,6 +180,10 @@ const Videos = () => {
           Fashion
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "Crypto" ? "selectedButton" : ""}
@@ -137,13 +191,17 @@ const Videos = () => {
           Crypto
         </Button>
         <Button
+          sx={{
+            border: dark ? "1px solid #fff !important" : null,
+            color: dark ? "#fff !important" : null,
+          }}
           variant="outlined"
           onClick={(e) => handleClick(e)}
           className={selectedButton === "GYM" ? "selectedButton" : ""}
         >
           GYM
         </Button>
-      </div>
+      </Box>
       <div className="cards grid-class">
         {videosData?.length > 0 ? (
           videosData?.map((vd: any, index: any) => (
@@ -159,7 +217,14 @@ const Videos = () => {
                     className="channelImg"
                     alt="Eror"
                   />
-                  <h4>{vd.snippet.channelTitle}</h4>
+                  <h4
+                  // style={{
+                  //   backgroundColor: dark ? "#1D1A17 !important" : null,
+                  //   color: dark ? "#fff" : null,
+                  // }}
+                  >
+                    {vd.snippet.channelTitle}
+                  </h4>
                 </div>
               </Link>
             </div>

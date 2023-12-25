@@ -86,9 +86,17 @@ export default function Dashboard() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Box sx={{ display: "flex" }}>
+      <Box
+        sx={{
+          display: "flex",
+        }}
+      >
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar
+          position="absolute"
+          open={open}
+          sx={{ backgroundColor: dark ? "#1D1A17 !important" : null }}
+        >
           <Toolbar
             sx={{
               pr: "24px",
@@ -234,6 +242,9 @@ export default function Dashboard() {
           <Toolbar
             sx={{
               display: "flex",
+              backgroundColor: dark ? "#1D1A17 !important" : null,
+              color: dark ? "#fff !important" : null,
+              fill: dark ? "#fff" : null,
               alignItems: "center",
               justifyContent: "flex-end",
               px: [1],
@@ -244,7 +255,14 @@ export default function Dashboard() {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav">
+          <List
+            component="nav"
+            sx={{
+              backgroundColor: dark ? "#1D1A17 !important" : null,
+              color: dark ? "#fff !important" : null,
+              fill: dark ? "#fff !important" : null,
+            }}
+          >
             {mainListItems}
             <Divider sx={{ my: 1 }} />
             {secondaryListItems}
@@ -253,6 +271,8 @@ export default function Dashboard() {
         <Box
           component="main"
           sx={{
+            color: dark ? "#fff !important" : null,
+            fill: dark ? "#fff !important" : null,
             backgroundColor: (theme) =>
               theme.palette.mode === "light"
                 ? theme.palette.grey[100]
@@ -262,7 +282,13 @@ export default function Dashboard() {
             overflow: "auto",
           }}
         >
-          <Toolbar />
+          <Toolbar
+            sx={{
+              backgroundColor: dark ? "#1D1A17 !important" : null,
+              color: dark ? "#fff !important" : null,
+              fill: dark ? "#fff !important" : null,
+            }}
+          />
           <Videos />
         </Box>
       </Box>
