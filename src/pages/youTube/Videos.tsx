@@ -2,6 +2,7 @@ import { Box, Button } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../../loading/Loading";
 
 const Videos = () => {
   const [videosData, setVideosData] = useState<any>([]);
@@ -16,7 +17,7 @@ const Videos = () => {
         maxResults: "50",
       },
       headers: {
-        "X-RapidAPI-Key": "b4d3951735mshc2ec91a7c330cafp1fcff0jsn5d7b628e34d9",
+        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
@@ -24,7 +25,6 @@ const Videos = () => {
     try {
       let res = await axios.request(options);
       let data = await res.data;
-      console.log(data);
       setVideosData(data.items); // Set the items array to state
     } catch (error) {
       console.log(error);
@@ -37,7 +37,6 @@ const Videos = () => {
   }, []);
 
   const handleClick = async (e: any) => {
-    console.log(e.currentTarget.innerText);
     setSelectedButton(e.currentTarget.innerText);
     const options = {
       method: "GET",
@@ -48,7 +47,7 @@ const Videos = () => {
         maxResults: "50",
       },
       headers: {
-        "X-RapidAPI-Key": "b4d3951735mshc2ec91a7c330cafp1fcff0jsn5d7b628e34d9",
+        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
@@ -56,7 +55,6 @@ const Videos = () => {
     try {
       let res = await axios.request(options);
       let data = await res.data;
-      //   console.log(data);
       setVideosData(data.items); // Set the items array to state
     } catch (error) {
       console.log(error);
@@ -147,26 +145,28 @@ const Videos = () => {
         </Button>
       </div>
       <div className="cards grid-class">
-        {videosData.length > 0
-          ? videosData.map((vd: any, index: any) => (
-              <div className="card" key={index}>
-                <Link to={`/videos/${vd.id.videoId}`}>
-                  <img src={vd.snippet.thumbnails.high.url} alt="Error" />
-                </Link>
-                <h1>{vd.snippet.title}</h1>
-                <Link to={`/channel/${vd.snippet.channelId}`}>
-                  <div className="flex-class">
-                    <img
-                      src={vd.snippet.thumbnails.default.url}
-                      className="channelImg"
-                      alt="Eror"
-                    />
-                    <h4>{vd.snippet.channelTitle}</h4>
-                  </div>
-                </Link>
-              </div>
-            ))
-          : null}
+        {videosData?.length > 0 ? (
+          videosData?.map((vd: any, index: any) => (
+            <div className="card" key={index}>
+              <Link to={`/videos/${vd.id.videoId}`}>
+                <img src={vd.snippet.thumbnails.high.url} alt="Error" />
+              </Link>
+              <h1>{vd.snippet.title}</h1>
+              <Link to={`/channel/${vd.snippet.channelId}`}>
+                <div className="flex-class">
+                  <img
+                    src={vd.snippet.thumbnails.default.url}
+                    className="channelImg"
+                    alt="Eror"
+                  />
+                  <h4>{vd.snippet.channelTitle}</h4>
+                </div>
+              </Link>
+            </div>
+          ))
+        ) : (
+          <Loading />
+        )}
       </div>
     </Box>
   );

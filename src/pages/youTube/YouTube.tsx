@@ -21,6 +21,7 @@ import { Button, Stack, TextField } from "@mui/material";
 import MicIcon from "@mui/icons-material/Mic";
 import Videos from "./Videos";
 import useStore from "../../zustand/store";
+import { Link } from "react-router-dom";
 
 const drawerWidth: number = 240;
 
@@ -78,7 +79,6 @@ export default function Dashboard() {
   const handleSubmit = useStore((state: any) => state.handleSubmit);
   const dark = useStore((state: any) => state.dark);
   const darkClick = useStore((state: any) => state.darkClick);
-  console.log(dark);
   const [open, setOpen] = useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -114,35 +114,34 @@ export default function Dashboard() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              <button
-                onClick={() => location.reload()}
-                style={{ background: "#fff", border: "none" }}
-              >
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  sx={{
-                    alignItems: "center",
-                    position: open ? "absolute" : null,
-                    left: open ? "-20%" : null,
-                    top: open ? "17%" : null,
-                    cursor: "pointer",
-                  }}
-                >
-                  <YouTubeIcon
-                    className="youtubeicon"
+              <Link to="/">
+                <button style={{ background: "#fff", border: "none" }}>
+                  <Stack
+                    direction="row"
+                    spacing={1}
                     sx={{
-                      width: "4rem",
-                      height: "4rem",
-                      color: "#FF0000",
+                      alignItems: "center",
+                      position: open ? "absolute" : null,
+                      left: open ? "-20%" : null,
+                      top: open ? "17%" : null,
                       cursor: "pointer",
                     }}
-                  />
-                  <Typography variant="h4" sx={{ color: "#000" }}>
-                    YouTube
-                  </Typography>
-                </Stack>
-              </button>
+                  >
+                    <YouTubeIcon
+                      className="youtubeicon"
+                      sx={{
+                        width: "4rem",
+                        height: "4rem",
+                        color: "#FF0000",
+                        cursor: "pointer",
+                      }}
+                    />
+                    <Typography variant="h4" sx={{ color: "#000" }}>
+                      YouTube
+                    </Typography>
+                  </Stack>
+                </button>
+              </Link>
             </Typography>
             <form onSubmit={(e) => handleSubmit(e)}>
               <TextField

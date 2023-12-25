@@ -21,7 +21,7 @@ const useStore = create((set) => ({
         maxResults: "50",
       },
       headers: {
-        "X-RapidAPI-Key": "b4d3951735mshc2ec91a7c330cafp1fcff0jsn5d7b628e34d9",
+        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
@@ -32,7 +32,6 @@ const useStore = create((set) => ({
       set({
         searchVideos: data,
       });
-      //   console.log(data);
     } catch (error) {
       console.log(error);
     }

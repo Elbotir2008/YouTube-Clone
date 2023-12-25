@@ -3,10 +3,16 @@ import "./details.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReactPlayer from "react-player";
+import Loading from "../../loading/Loading";
+import { Button, Input } from "@mui/material";
 const Details = () => {
   const [detailsTools, setDetailsTools] = useState([]);
   const [detailsComments, setDetailsComments] = useState([]);
   const [detailsRecomendet, setDetailsRecomendet] = useState([]);
+  const [comments, setComments] = useState([{ id: 1, text: "Asadov Elbotir" }]);
+  const [newComment, setNewComment] = useState("");
+  const [editedCommentId, setEditedCommentId] = useState(null);
+  const [editedCommentText, setEditedCommentText] = useState("");
   let params = useParams();
   const fetchVideos = async () => {
     const options = {
@@ -17,7 +23,7 @@ const Details = () => {
         id: `${params.id}`,
       },
       headers: {
-        "X-RapidAPI-Key": "b4d3951735mshc2ec91a7c330cafp1fcff0jsn5d7b628e34d9",
+        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
@@ -25,7 +31,6 @@ const Details = () => {
     try {
       let res = await axios.request(options);
       let data = await res.data;
-      //   console.log(data.items);
       setDetailsTools(data.items);
     } catch (error) {
       console.log(error);
@@ -42,14 +47,13 @@ const Details = () => {
         maxResults: "100",
       },
       headers: {
-        "X-RapidAPI-Key": "b4d3951735mshc2ec91a7c330cafp1fcff0jsn5d7b628e34d9",
+        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
     try {
       let res = await axios.request(options);
       let data = await res.data;
-      console.log(data.items);
       setDetailsComments(data.items);
     } catch (error) {
       console.log(error);
@@ -67,18 +71,45 @@ const Details = () => {
         maxResults: "50",
       },
       headers: {
-        "X-RapidAPI-Key": "b4d3951735mshc2ec91a7c330cafp1fcff0jsn5d7b628e34d9",
+        "X-RapidAPI-Key": "1d48b52a30msh402aef233dd2b53p13823djsn07843b2bbce3",
         "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
       },
     };
     try {
       let res = await axios.request(options);
       let data = await res.data;
-      console.log(data.items);
       setDetailsRecomendet(data.items);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const addComment = (e: any) => {
+    e.preventDefault();
+    if (newComment.trim() !== "") {
+      const newComments = [
+        ...comments,
+        { id: comments.length + 1, text: newComment },
+      ];
+      setComments(newComments);
+      setNewComment("");
+    }
+  };
+
+  const editComment = (id: any, text: any) => {
+    setEditedCommentId(id);
+    setEditedCommentText(text);
+  };
+
+  const saveEditedComment = () => {
+    const updatedComments = comments.map((comment) =>
+      comment.id === editedCommentId
+        ? { ...comment, text: editedCommentText }
+        : comment
+    );
+    setComments(updatedComments);
+    setEditedCommentId(null);
+    setEditedCommentText("");
   };
 
   useEffect(() => {
@@ -86,31 +117,103 @@ const Details = () => {
     fetchComments();
     fetchRecomendetVideos();
   }, []);
+
+  const deleteComment = (id: any) => {
+    const updatedComments = comments.filter((comment) => comment.id !== id);
+    setComments(updatedComments);
+  };
+
   return (
     <div className="flex-class">
       <div className="videoBox">
-        {detailsTools.length > 0
-          ? detailsTools.map((dt: any, index) => (
-              <div className="details" key={index}>
-                <ReactPlayer
-                  url={`https://www.youtube.com/watch?v=${params.id}`}
-                  controls
-                  className="react-player"
-                  loop
-                  playing
-                />
-                <h1>{dt.snippet.title}</h1>
-                <p>{dt.snippet.description}</p>
-                <b>#{dt.snippet.tags[0]}</b>
-                <b className="b">#{dt.snippet.tags[1]}</b>
-                <b className="b">#{dt.snippet.tags[2]}</b>
-                <b className="b">#{dt.snippet.tags[3]}</b>
-              </div>
-            ))
-          : null}
+        {detailsTools?.length > 0 ? (
+          detailsTools?.map((dt: any, index) => (
+            <div className="details" key={index}>
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${params.id}`}
+                controls
+                className="react-player"
+                loop
+                playing
+              />
+              <h1>{dt.snippet.title}</h1>
+              <p>{dt.snippet.description}</p>
+              <b>#{dt.snippet.tags[0]}</b>
+              <b className="b">#{dt.snippet.tags[1]}</b>
+              <b className="b">#{dt.snippet.tags[2]}</b>
+              <b className="b">#{dt.snippet.tags[3]}</b>
+            </div>
+          ))
+        ) : (
+          <Loading />
+        )}
+
+        <div className="myComments">
+          <form>
+            <Input
+              size="medium"
+              sx={{ marginLeft: "5rem", width: "40rem", fontSize: "1.6rem" }}
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              type="text"
+              placeholder="write comment..."
+            />
+            <Button
+              type="submit"
+              variant="outlined"
+              onClick={(e) => addComment(e)}
+            >
+              Add Comment
+            </Button>
+          </form>
+        </div>
+
         <div className="comments">
-          {detailsComments.length > 0
-            ? detailsComments.map((dc: any, index) => (
+          <div className="comments">
+            {comments.map((comment) => (
+              <div key={comment.id} className="comment2">
+                {editedCommentId === comment.id ? (
+                  <div className="flex-class">
+                    <input
+                      type="text"
+                      value={editedCommentText}
+                      onChange={(e) => setEditedCommentText(e.target.value)}
+                    />
+                    <Button
+                      variant="outlined"
+                      style={{ marginLeft: "0rem", marginTop: "0rem" }}
+                      onClick={saveEditedComment}
+                    >
+                      Save
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="flex-class">
+                    <img
+                      src="../../../public/menjpeg.jpeg"
+                      className="myImg"
+                      alt="Eror"
+                    />
+                    <p className="commenPhar">{comment.text}</p>
+                  </div>
+                )}
+                <Button
+                  variant="outlined"
+                  onClick={() => editComment(comment.id, comment.text)}
+                >
+                  Edit
+                </Button>
+                <Button
+                  variant="outlined"
+                  onClick={() => deleteComment(comment.id)}
+                >
+                  Delete
+                </Button>
+              </div>
+            ))}
+          </div>
+          {detailsComments?.length > 0
+            ? detailsComments?.map((dc: any, index) => (
                 <div className="comment flex-class" key={index}>
                   <Link to={`/channel/${dc.snippet.channelId}`}>
                     <img
@@ -129,42 +232,44 @@ const Details = () => {
         </div>
       </div>
       <div className="recomendetVideos">
-        {detailsRecomendet.length > 0
-          ? detailsRecomendet.map((dv: any, index) => (
-              <div className="rcvideos flex-class" key={index}>
-                <Link to={`/videos/${dv.id.videoId}`}>
-                  <img
-                    src={dv.snippet.thumbnails.medium.url}
-                    width="200px"
-                    height="100px"
-                    style={{ cursor: "pointer" }}
-                    alt="Eror"
-                  />
-                </Link>
-                <div className="rcvideos-txt">
-                  <div
-                    className="flex-class"
-                    style={{ alignItems: "center", marginLeft: "1rem" }}
-                  >
-                    <Link to={`/channel/${dv.snippet.channelId}`}>
-                      <img
-                        src={dv.snippet.thumbnails.default.url}
-                        width="50px"
-                        height="50px"
-                        alt="Eror"
-                        style={{
-                          borderRadius: "50%",
-                          marginRight: "1rem",
-                        }}
-                      />
-                    </Link>
-                    <h2>{dv.snippet.channelTitle}</h2>
-                  </div>
-                  <h3>{dv.snippet.title}</h3>
+        {detailsRecomendet?.length > 0 ? (
+          detailsRecomendet?.map((dv: any, index) => (
+            <div className="rcvideos flex-class" key={index}>
+              <Link to={`/videos/${dv.id.videoId}`}>
+                <img
+                  src={dv.snippet.thumbnails.medium?.url}
+                  width="200px"
+                  height="100px"
+                  style={{ cursor: "pointer" }}
+                  alt="Eror"
+                />
+              </Link>
+              <div className="rcvideos-txt">
+                <div
+                  className="flex-class"
+                  style={{ alignItems: "center", marginLeft: "1rem" }}
+                >
+                  <Link to={`/channel/${dv.snippet.channelId}`}>
+                    <img
+                      src={dv.snippet.thumbnails.default?.url}
+                      width="50px"
+                      height="50px"
+                      alt="Eror"
+                      style={{
+                        borderRadius: "50%",
+                        marginRight: "1rem",
+                      }}
+                    />
+                  </Link>
+                  <h2>{dv.snippet.channelTitle}</h2>
                 </div>
+                <h3>{dv.snippet.title}</h3>
               </div>
-            ))
-          : null}
+            </div>
+          ))
+        ) : (
+          <Loading />
+        )}
       </div>
     </div>
   );

@@ -35,7 +35,7 @@
 }
 
 .recomendetVideos {
-  margin-top: 5rem;
+  margin-top: -282rem;
   margin-right: 24rem;
   .rcvideos {
     margin-bottom: 3rem;
@@ -47,5 +47,43 @@
     width: 15rem;
     margin-top: 1rem;
     margin-left: 1rem;
+  }
+}
+
+/* Add your CSS styles here */
+.comments {
+  padding: 10px;
+  margin: 20px;
+}
+
+.comment2 {
+  width: 30rem;
+}
+.comments input[type="text"] {
+  width: 400px;
+  padding: 5px;
+  margin-right: 10px;
+}
+.commenPhar {
+  margin: 1rem;
+  // margin-left: 3rem;
+  // margin-bottom: -4rem;
+  font-size: 1.5rem;
+}
+.comments button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-top: 1rem;
+  &:nth-child(2) {
+    margin-left: 3rem;
+  }
+}
+
+.flex-class {
+  align-items: center;
+  .myImg {
+    margin-left: -3rem;
+    border-radius: 50%;
+    width: 5.5rem;
   }
 }
