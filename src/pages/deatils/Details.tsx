@@ -111,7 +111,7 @@ const Details = () => {
         <div className="comments">
           {detailsComments.length > 0
             ? detailsComments.map((dc: any, index) => (
-                <div className="comment flex-class">
+                <div className="comment flex-class" key={index}>
                   <img
                     src={
                       dc.snippet.topLevelComment.snippet.authorProfileImageUrl

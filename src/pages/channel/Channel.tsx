@@ -66,8 +66,9 @@ const Channel = () => {
   return (
     <div className="channel">
       {channel.length > 0
-        ? channel.map((ch: any) => (
+        ? channel.map((ch: any, index) => (
             <div
+              key={index}
               className="channel-box"
               style={{
                 backgroundColor: "black",
@@ -97,8 +98,8 @@ const Channel = () => {
 
       <div className="channelVideos grid-class">
         {channelVideos.length > 0
-          ? channelVideos.map((chv: any) => (
-              <Link to={`/videos/${chv.id.videoId}`}>
+          ? channelVideos.map((chv: any, index) => (
+              <Link to={`/videos/${chv.id.videoId}`} key={index}>
                 <div className="channelVideo">
                   <img
                     src={chv.snippet.thumbnails.medium.url}
