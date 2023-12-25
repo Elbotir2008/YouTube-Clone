@@ -1,0 +1,51 @@
+.details {
+  padding: 5rem;
+  width: 80%;
+  h1 {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+  p {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    font-weight: 500;
+    line-height: 2rem;
+  }
+  b {
+    color: lightblue;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+  .b {
+    margin-left: 2rem;
+  }
+}
+.comments {
+  width: 70%;
+  padding-left: 5rem;
+  .comment {
+    margin-top: 4rem;
+    img {
+      margin-right: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.recomendetVideos {
+  margin-top: 5rem;
+  margin-right: 24rem;
+  .rcvideos {
+    margin-bottom: 3rem;
+    h2 {
+      width: 15rem;
+    }
+  }
+  h3 {
+    width: 15rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+}

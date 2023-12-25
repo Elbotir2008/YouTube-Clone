@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+li {
+  list-style: none;
+}
+span {
+  display: inline-block;
+}
+a {
+  outline: none;
+  text-decoration: none;
+}
+button {
+  outline: none;
+  cursor: pointer;
+}
+.flex-class {
+  display: flex;
+}
+.grid-class {
+  display: grid;
+}
