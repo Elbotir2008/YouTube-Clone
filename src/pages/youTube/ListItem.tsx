@@ -4,6 +4,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import DownloadIcon from "@mui/icons-material/Download";
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
+import PeopleIcon from "@mui/icons-material/People";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import ContentCutIcon from "@mui/icons-material/ContentCut";

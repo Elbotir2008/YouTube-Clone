@@ -33,3 +33,7 @@ button {
 .grid-class {
   display: grid;
 }
+.dark {
+  background-color: #0f0f0f;
+  color: #fff;
+}

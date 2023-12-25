@@ -112,12 +112,14 @@ const Details = () => {
           {detailsComments.length > 0
             ? detailsComments.map((dc: any, index) => (
                 <div className="comment flex-class" key={index}>
-                  <img
-                    src={
-                      dc.snippet.topLevelComment.snippet.authorProfileImageUrl
-                    }
-                    alt="Eror"
-                  />
+                  <Link to={`/channel/${dc.snippet.channelId}`}>
+                    <img
+                      src={
+                        dc.snippet.topLevelComment.snippet.authorProfileImageUrl
+                      }
+                      alt="Eror"
+                    />
+                  </Link>
                   <h4 key={index}>
                     {dc.snippet.topLevelComment.snippet.textOriginal}
                   </h4>
@@ -144,16 +146,18 @@ const Details = () => {
                     className="flex-class"
                     style={{ alignItems: "center", marginLeft: "1rem" }}
                   >
-                    <img
-                      src={dv.snippet.thumbnails.default.url}
-                      width="50px"
-                      height="50px"
-                      alt="Eror"
-                      style={{
-                        borderRadius: "50%",
-                        marginRight: "1rem",
-                      }}
-                    />
+                    <Link to={`/channel/${dv.snippet.channelId}`}>
+                      <img
+                        src={dv.snippet.thumbnails.default.url}
+                        width="50px"
+                        height="50px"
+                        alt="Eror"
+                        style={{
+                          borderRadius: "50%",
+                          marginRight: "1rem",
+                        }}
+                      />
+                    </Link>
                     <h2>{dv.snippet.channelTitle}</h2>
                   </div>
                   <h3>{dv.snippet.title}</h3>

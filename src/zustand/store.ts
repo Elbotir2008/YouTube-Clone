@@ -4,6 +4,7 @@ import { create } from "zustand";
 const useStore = create((set) => ({
   searchValue: "",
   searchVideos: [],
+  dark: false,
   handleSubmit: async (e: any) => {
     e.preventDefault();
     set({ searchValue: e.target[0].value });
@@ -35,6 +36,9 @@ const useStore = create((set) => ({
     } catch (error) {
       console.log(error);
     }
+  },
+  darkClick: () => {
+    set((state: any) => ({ dark: !state.dark }));
   },
 }));
 export default useStore;

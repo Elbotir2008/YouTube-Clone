@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Shorts from "./pages/shorts/Shorts";
 import TradingVideos from "./pages/tradingVideos/TradingVideos";
@@ -7,12 +6,6 @@ import YouTube2 from "./pages/deatils/YouTube";
 import YouTube3 from "./pages/channel/YouTube";
 
 function App() {
-  const [dark, setDark] = useState(false);
-
-  const toggleDark = () => {
-    setDark(true);
-  };
-
   return (
     <div>
       <BrowserRouter>
