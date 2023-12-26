@@ -123,6 +123,17 @@ const Details = () => {
     setComments(updatedComments);
   };
 
+  useEffect(() => {
+    const storedComments = localStorage.getItem("comments");
+    if (storedComments) {
+      setComments(JSON.parse(storedComments));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(comments));
+  }, [comments]);
+
   return (
     <div className="flex-class">
       <div className="videoBox">
